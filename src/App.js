@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './containers/Header';
+import Counter from './containers/counter/counter-neg';
+import Game from './containers/Games/Game';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './containers/Interest/home';
+import ProductsPage from './containers/Shop/products';
+import ProductDetails from './containers/Shop/product-details';
+import users from "./users.json"
 
 function App() {
+  console.log("Users", users)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/game' element={<Game />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path='/shop' element={<ProductsPage />} />
+          <Route path='/shop/:productId' element={<ProductDetails />} />
+
+          <Route>404 Page Not Found!</Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
