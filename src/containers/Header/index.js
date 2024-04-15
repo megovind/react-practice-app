@@ -34,6 +34,14 @@ const Header = () => {
 
                 />
             </Link>
+            <Link to={"/editor"}>
+                <Menu.Item
+                    name='editor'
+                    active={activeItem === 'editor'}
+                    onClick={handleItemClick}
+
+                />
+            </Link>
             <Menu.Menu position='right'>
                 <Menu.Item>
                     <Input icon='search' placeholder='Search...' />
